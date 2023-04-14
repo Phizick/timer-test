@@ -43,14 +43,25 @@ inputEl.addEventListener('input', () => {
   inputEl.value = inputEl.value.replace(/\D/g, '');
   disableButton()
 });
+
+const startTimer = () => {
+    const seconds = Number(inputEl.value);
+    animateTimer(seconds);
+    inputEl.value = '';
+    disableButton()
+}
 // обрабатываем кнопку
-buttonEl.addEventListener('click', () => {
-  const seconds = Number(inputEl.value);
-  animateTimer(seconds);
-  inputEl.value = '';
-  disableButton()
+buttonEl.addEventListener('click', startTimer);
+
+//добавляем обработчик для кнопки "enter"
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        startTimer()
+    }
 });
+
 // кушаем печеньки =)
+
 
 
 
